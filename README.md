@@ -1,3 +1,5 @@
+![.Net workflow](https://github.com/foliba/Swagger-generated-HTTP-clients/actions/workflows/dotnet.yml/badge.svg)
+
 # Introduction
 
 Just a small example .Net WebAPI project which generates http clients (for C# and TypeScript) based on generated swagger documentation. These clients can be used to distribute to API consumers and as shown here in the API level tests directly.
