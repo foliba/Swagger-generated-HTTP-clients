@@ -1,6 +1,6 @@
 using System.Net.Http;
 
-namespace WebApplication.Test.Tests
+namespace WebApplication.Tests
 {
     public abstract class BaseTest
     {

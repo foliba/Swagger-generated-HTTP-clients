@@ -1,8 +1,6 @@
-using System;
 using System.Threading.Tasks;
 using FluentAssertions;
 using WebApplication.Clients;
-using WebApplication.Test.Tests;
 using Xunit;
 
 namespace WebApplication.Tests

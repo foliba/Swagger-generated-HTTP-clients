@@ -5,20 +5,20 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace WebApplication.Test
+namespace WebApplication.Tests
 {
-    public class WebApplicationTestFactory: WebApplicationFactory<Startup>, IDisposable
+    public class WebApplicationTestFactory : WebApplicationFactory<Startup>, IDisposable
     {
         public new void Dispose()
         {
             Dispose(true);
         }
-        
+
         public new void Dispose(bool disposing)
         {
             base.Dispose(disposing);
         }
-        
+
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
             builder.UseEnvironment("Testing");
