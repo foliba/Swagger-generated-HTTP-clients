@@ -16,7 +16,7 @@ namespace WebApplication.Controllers
         /// Example GET API which returns an entity based on a date
         /// </summary>
         /// <param name="requestDTO"></param>
-        /// <returns></returns>
+        /// <returns><see cref="DataResponseDTO"/></returns>
         [HttpGet]
         [ProducesResponseType(typeof(ValidationProblemDetails), (int) HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(DataResponseDTO), (int) HttpStatusCode.OK)]

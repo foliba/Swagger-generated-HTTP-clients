@@ -17,7 +17,7 @@ namespace WebApplication.Tests
         [Fact]
         public async Task ShouldReturnSuccess()
         {
-            var res = await _weatherForecastClient.GetAsync();
+            var res = await _weatherForecastClient.GetAsync(null);
             res.Should().NotBeNull();
             res.Count.Should().BePositive();
         }

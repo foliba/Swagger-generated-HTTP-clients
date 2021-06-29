@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace WebApplication.Controllers
 {
+    /// <summary>
+    /// Demo Weather controller which generates weather data on the fly
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
@@ -15,24 +18,23 @@ namespace WebApplication.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
-        {
-            _logger = logger;
-        }
-
+        /// <summary>
+        /// Parameter are defined inline, which makes XML documentations much harder <br/>
+        /// As 
+        /// </summary>
+        /// <returns>Generated a list of <see cref="WeatherForecast"/> data</returns>
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public IEnumerable<WeatherForecast> Get(
+            [FromQuery]
+            [Range(1, int.MaxValue, ErrorMessage = "Page must be a positive non zero integer")] int? amount)
         {
             var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-                {
-                    Date = DateTime.Now.AddDays(index),
-                    TemperatureC = rng.Next(-20, 55),
-                    Summary = Summaries[rng.Next(Summaries.Length)]
-                })
-                .ToArray();
+            return Enumerable.Range(1, amount ?? 5).Select(index => new WeatherForecast
+            {
+                Date = DateTime.UtcNow.AddDays(index),
+                TemperatureC = rng.Next(-20, 55),
+                Summary = Summaries[rng.Next(Summaries.Length)]
+            });
         }
     }
 }
