@@ -348,3 +348,6 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+WebApplication/WebApplication/swagger.json
+WebApplication/WebApplication/webapplication.api.cs
+WebApplication/WebApplication/webapplication.api.ts
