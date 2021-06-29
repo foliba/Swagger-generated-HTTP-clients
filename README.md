@@ -14,7 +14,7 @@ We have an after build target which does:
 # RFC3339 model binder
 The ISO 8601 date time format doesn't require the timezone to be set and the local time is assumed when none is set (https://en.wikipedia.org/wiki/ISO_8601#Local_time_(unqualified)). I highly recommend to always use the [RFC3339](https://en.wikipedia.org/wiki/ISO_8601#RFCs) when building APIs where local time of the client and server might differ.
 
-Using this model binder takes forces the json serializer to check against RFC3339 when DateTimes are parsed over.
+Using this model binder forces the json serializer to check against RFC3339 when DateTimes are parsed over.
 
 # Newtonsoft vs System.Text.Json
 As System.Text.Json still has some issues with inheritance and Newtonsoft just works so flawlessly in this regard, I still prefere good old newtonsoft.json.
