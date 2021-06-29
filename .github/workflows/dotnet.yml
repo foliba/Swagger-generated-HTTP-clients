@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ main ]
 
+defaults:
+  run:
+    working-directory: ./WebApplication
+
 jobs:
   build:
 
@@ -18,8 +22,8 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
-      run: dotnet restore WebApplication
+      run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore WebApplication
+      run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal WebApplication
+      run: dotnet test --no-build --verbosity normal
