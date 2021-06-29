@@ -6,17 +6,19 @@ using WebApplication.DTOs;
 namespace WebApplication.Controllers
 {
     /// <summary>
-    /// Simple Controller which uses as an example for a reading REST API
+    ///     Simple Controller which uses as an example for a reading REST API
     /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class DataController : ControllerBase
     {
         /// <summary>
-        /// Example GET API which returns an entity based on a date
+        ///     Example GET API which returns an entity based on a date
         /// </summary>
         /// <param name="requestDTO"></param>
-        /// <returns><see cref="DataResponseDTO"/></returns>
+        /// <returns>
+        ///     <see cref="DataResponseDTO" />
+        /// </returns>
         [HttpGet]
         [ProducesResponseType(typeof(ValidationProblemDetails), (int) HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(DataResponseDTO), (int) HttpStatusCode.OK)]

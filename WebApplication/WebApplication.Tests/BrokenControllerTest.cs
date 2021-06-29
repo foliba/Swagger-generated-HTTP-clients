@@ -14,7 +14,7 @@ namespace WebApplication.Tests
         {
             var brokenClient = new BrokenClient(BASE_URI, Client);
             var ex = await Assert.ThrowsAsync<ApiException<ProblemDetails>>(() => brokenClient.GetAsync());
-            ex.StatusCode.Should().Be((int)HttpStatusCode.InternalServerError);
+            ex.StatusCode.Should().Be((int) HttpStatusCode.InternalServerError);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace WebApplication.Tests
 
             res.Date.Should().Be(currDate.ToUniversalTime());
         }
-        
+
         [Fact]
         public async Task ShouldReturnCorrectDataSet()
         {
@@ -44,8 +44,8 @@ namespace WebApplication.Tests
 
             var ex = await Assert.ThrowsAsync<ApiException<ValidationProblemDetails>>(
                 () => dataClient.GetDataAsync(currDate, 0));
-            
-            ex.StatusCode.Should().Be((int)HttpStatusCode.BadRequest);
+
+            ex.StatusCode.Should().Be((int) HttpStatusCode.BadRequest);
             ex.Result.Errors.Keys.Should().Contain("MaxResultCount");
             ex.Result.Errors["MaxResultCount"].Should().BeEquivalentTo("Page must be a positive non zero integer");
         }

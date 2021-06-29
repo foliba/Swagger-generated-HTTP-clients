@@ -3,7 +3,7 @@ using System;
 namespace WebApplication
 {
     /// <summary>
-    /// We don't add XML comments here to showcase that those information are missing in swagger when not set
+    ///     We don't add XML comments here to showcase that those information are missing in swagger when not set
     /// </summary>
     public class WeatherForecast
     {

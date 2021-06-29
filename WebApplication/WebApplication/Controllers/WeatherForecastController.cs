@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebApplication.Controllers
 {
     /// <summary>
-    /// Demo Weather controller which generates weather data on the fly
+    ///     Demo Weather controller which generates weather data on the fly
     /// </summary>
     [ApiController]
     [Route("[controller]")]
@@ -19,14 +19,14 @@ namespace WebApplication.Controllers
         };
 
         /// <summary>
-        /// Parameter are defined inline, which makes XML documentations much harder <br/>
-        /// As 
+        ///     Parameter are defined inline, which makes XML documentations much harder <br />
+        ///     As
         /// </summary>
-        /// <returns>Generated a list of <see cref="WeatherForecast"/> data</returns>
+        /// <returns>Generated a list of <see cref="WeatherForecast" /> data</returns>
         [HttpGet]
         public IEnumerable<WeatherForecast> Get(
-            [FromQuery]
-            [Range(1, int.MaxValue, ErrorMessage = "Page must be a positive non zero integer")] int? amount)
+            [FromQuery] [Range(1, int.MaxValue, ErrorMessage = "Page must be a positive non zero integer")]
+            int? amount)
         {
             var rng = new Random();
             return Enumerable.Range(1, amount ?? 5).Select(index => new WeatherForecast

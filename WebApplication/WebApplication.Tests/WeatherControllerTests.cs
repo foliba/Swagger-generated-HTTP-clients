@@ -25,17 +25,17 @@ namespace WebApplication.Tests
         [Fact]
         public async Task ShouldReturnCorrectAmountOfElements()
         {
-            var expectedAmount = 10;
+            const int expectedAmount = 10;
             var res = await _weatherForecastClient.GetAsync(expectedAmount);
             res.Count.Should().Be(expectedAmount);
         }
-        
+
         [Fact]
         public async Task ShouldReturnDefaultFiveElements()
         {
             var weatherForecastClient = new WeatherForecastClient(BASE_URI, Client);
             const int expectedAmount = 5;
-            var res = await weatherForecastClient.GetAsync(amount: null);
+            var res = await weatherForecastClient.GetAsync(null);
             res.Count.Should().Be(expectedAmount);
         }
     }
