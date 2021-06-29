@@ -19,5 +19,6 @@
         <Exec Condition="!$([MSBuild]::IsOsPlatform(Windows))" Command="$(NSwagExe_Net50) aspnetcore2openapi /configuration:$(Configuration) /project:'$(MSBuildProjectFullPath)' /documentName:v1 /output:swagger.json /noBuild:true" />
         <Exec Command="$(NSwagExe_Net50) openapi2tsclient /input:swagger.json /template:Angular /injectionTokenType:InjectionToken /dateTimeType:Date /output:webapplication.api.ts" />
         <Exec Command="$(NSwagExe_Net50) openapi2csclient /GenerateClientInterfaces:true /AdditionalNamespaceUsages:WebApplication,Microsoft.AspNetCore.Mvc /GenerateDtoTypes:false /input:swagger.json DateType:System.DateTime /DateTimeType:System.DateTime /ParameterDateTimeFormat:o /Namespace:WebApplication.Clients /output:webapplication.api.cs" />
+        <Move SourceFiles="$(ProjectDir)webapplication.api.cs" DestinationFolder="$(ProjectDir)../WebApplication.Tests" />
     </Target>
 </Project>

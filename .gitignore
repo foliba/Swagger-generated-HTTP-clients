@@ -351,3 +351,4 @@ MigrationBackup/
 WebApplication/WebApplication/swagger.json
 WebApplication/WebApplication/webapplication.api.cs
 WebApplication/WebApplication/webapplication.api.ts
+webapplication.api.cs
