@@ -20,8 +20,11 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
       working-directory: ./WebApplication
-    - name: Build
-      run: dotnet build --no-restore
+    - name: Build API
+      run: dotnet build WebApplication --no-restore
+      working-directory: ./WebApplication
+    - name: Build Tests
+      run: dotnet build WebApplication.Tests --no-restore
       working-directory: ./WebApplication
     - name: Test
       run: dotnet test --no-build --verbosity normal
