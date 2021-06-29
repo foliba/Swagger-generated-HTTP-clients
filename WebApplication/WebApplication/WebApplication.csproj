@@ -13,6 +13,14 @@
       </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="webapplication.api.ts" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="swagger.json" />
+    </ItemGroup>
+
     <Target Name="NSwag" AfterTargets="Build">
         <Message Text="This is the AfterBuild target for nswag" Importance="normal" />
         <Exec Condition="$([MSBuild]::IsOsPlatform(Windows))" Command="$(NSwagExe_Net50) aspnetcore2openapi /configuration:$(Configuration) /project:&quot;$(MSBuildProjectFullPath)&quot; /documentName:v1 /output:swagger.json /noBuild:true" />
