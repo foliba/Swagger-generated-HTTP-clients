@@ -26,9 +26,8 @@ namespace WebApplication.Controllers
         {
             return Ok(new DataResponseDTO
             {
-                // ReSharper disable once PossibleInvalidOperationException
                 //  can't be null as marked as [Required] in the DTO
-                Date = requestDTO.Date.Value,
+                Date = requestDTO.Date!.Value,
                 DataSet = new List<string>
                 {
                     "chicken",

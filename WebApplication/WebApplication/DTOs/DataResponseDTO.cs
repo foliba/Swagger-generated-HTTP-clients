@@ -21,6 +21,6 @@ namespace WebApplication.DTOs
         /// <summary>
         ///     Just some list of strings as an example for some loaded data
         /// </summary>
-        public List<string> DataSet { get; set; }
+        public List<string>? DataSet { get; set; }
     }
 }

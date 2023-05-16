@@ -1,7 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net7.0</TargetFramework>
+        <LangVersion>11</LangVersion>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -14,9 +16,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.7" />
-      <PackageReference Include="NSwag.AspNetCore" Version="13.11.3" />
-      <PackageReference Include="NSwag.MSBuild" Version="13.11.3">
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.5" />
+      <PackageReference Include="NSwag.AspNetCore" Version="13.19.0" />
+      <PackageReference Include="NSwag.MSBuild" Version="13.19.0">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
@@ -32,10 +34,10 @@
 
     <Target Name="NSwag" AfterTargets="Build">
         <Message Text="This is the AfterBuild target for nswag" Importance="normal" />
-        <Exec Condition="$([MSBuild]::IsOsPlatform(Windows))" Command="$(NSwagExe_Net50) aspnetcore2openapi /configuration:$(Configuration) /project:&quot;$(MSBuildProjectFullPath)&quot; /documentName:v1 /output:swagger.json /noBuild:true" />
-        <Exec Condition="!$([MSBuild]::IsOsPlatform(Windows))" Command="$(NSwagExe_Net50) aspnetcore2openapi /configuration:$(Configuration) /project:'$(MSBuildProjectFullPath)' /documentName:v1 /output:swagger.json /noBuild:true" />
-        <Exec Command="$(NSwagExe_Net50) openapi2tsclient /input:swagger.json /template:Angular /injectionTokenType:InjectionToken /dateTimeType:Date /output:webapplication.api.ts" />
-        <Exec Command="$(NSwagExe_Net50) openapi2csclient /GenerateClientInterfaces:true /AdditionalNamespaceUsages:WebApplication,WebApplication.DTOs,Microsoft.AspNetCore.Mvc /GenerateDtoTypes:false /input:swagger.json DateType:System.DateTime /DateTimeType:System.DateTime /ParameterDateTimeFormat:o /Namespace:WebApplication.Clients /output:webapplication.api.cs" />
+        <Exec Condition="$([MSBuild]::IsOsPlatform(Windows))" Command="$(NSwagExe_Net70) aspnetcore2openapi /configuration:$(Configuration) /project:&quot;$(MSBuildProjectFullPath)&quot; /documentName:v1 /output:swagger.json /noBuild:true" />
+        <Exec Condition="!$([MSBuild]::IsOsPlatform(Windows))" Command="$(NSwagExe_Net70) aspnetcore2openapi /configuration:$(Configuration) /project:'$(MSBuildProjectFullPath)' /documentName:v1 /output:swagger.json /noBuild:true" />
+        <Exec Command="$(NSwagExe_Net70) openapi2tsclient /input:swagger.json /template:Angular /injectionTokenType:InjectionToken /dateTimeType:Date /output:webapplication.api.ts" />
+        <Exec Command="$(NSwagExe_Net70) openapi2csclient /GenerateClientInterfaces:true /AdditionalNamespaceUsages:WebApplication,WebApplication.DTOs,Microsoft.AspNetCore.Mvc /GenerateDtoTypes:false /input:swagger.json DateType:System.DateTime /DateTimeType:System.DateTime /ParameterDateTimeFormat:o /Namespace:WebApplication.Clients /output:webapplication.api.cs" />
         <Move SourceFiles="$(ProjectDir)webapplication.api.cs" DestinationFolder="$(ProjectDir)../WebApplication.Tests" />
     </Target>
 </Project>
